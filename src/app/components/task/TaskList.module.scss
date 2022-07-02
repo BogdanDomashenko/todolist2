@@ -1,0 +1,14 @@
+.taskList {
+  .item {
+    margin-bottom: 20px;
+  }
+
+  .table {
+    overflow-wrap: anywhere;
+    text-align: center !important;
+
+    td, th {
+      text-align: center;
+    }
+  }
+}

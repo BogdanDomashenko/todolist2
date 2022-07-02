@@ -14,7 +14,9 @@
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"noEmit": true,
-		"jsx": "react-jsx"
+		"jsx": "react-jsx",
+		"plugins": [{ "name": "typescript-plugin-css-modules" }]
 	},
+	"files": ["./node_modules/wmr/types.d.ts"],
 	"include": ["src"]
 }

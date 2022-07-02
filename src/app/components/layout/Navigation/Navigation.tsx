@@ -14,12 +14,12 @@ import {
 	Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { mainNavigation } from "./navigation.data";
 
 interface Props {
 	window?: () => Window;
 }
 
-const navItems = ["Home", "About", "Contact"];
 const drawerWidth = 240;
 
 const Navigation = (props: Props) => {
@@ -50,12 +50,12 @@ const Navigation = (props: Props) => {
 						component="div"
 						sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
 					>
-						MUI
+						{mainNavigation.title}
 					</Typography>
 					<Box sx={{ display: { xs: "none", sm: "block" } }}>
-						{navItems.map((item) => (
-							<Button key={item} sx={{ color: "#fff" }}>
-								{item}
+						{mainNavigation.list.map((item) => (
+							<Button key={item.title} sx={{ color: "#fff" }}>
+								{item.title}
 							</Button>
 						))}
 					</Box>
@@ -68,7 +68,7 @@ const Navigation = (props: Props) => {
 					open={mobileOpen}
 					onClose={handleDrawerToggle}
 					ModalProps={{
-						keepMounted: true, // Better open performance on mobile.
+						keepMounted: true,
 					}}
 					sx={{
 						display: { xs: "block", sm: "none" },
@@ -80,14 +80,14 @@ const Navigation = (props: Props) => {
 				>
 					<Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
 						<Typography variant="h6" sx={{ my: 2 }}>
-							MUI
+							{mainNavigation.title}
 						</Typography>
 						<Divider />
 						<List>
-							{navItems.map((item) => (
-								<ListItem key={item} disablePadding>
+							{mainNavigation.list.map((item) => (
+								<ListItem key={item.title} disablePadding>
 									<ListItemButton sx={{ textAlign: "center" }}>
-										<ListItemText primary={item} />
+										<ListItemText primary={item.title} />
 									</ListItemButton>
 								</ListItem>
 							))}
