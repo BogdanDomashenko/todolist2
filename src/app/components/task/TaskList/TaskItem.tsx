@@ -1,10 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import { Button, Checkbox, TableCell, TableRow } from "@mui/material";
-import { ITask } from "../../store/tasks/tasks.interface";
-import { useLocale } from "../../hooks";
-import { Status } from "../../shared/types/task.types";
-import { useAppDispatch } from "../../hooks/store.hook";
-import { setTaskStatus } from "../../store/tasks/tasks.slice";
+import { ITask } from "../../../store/tasks/tasks.interface";
+import { useLocale } from "../../../hooks";
+import { Status } from "../../../shared/types/task.types";
+import { useAppDispatch } from "../../../hooks/store.hook";
+import { setTaskStatus } from "../../../store/tasks/tasks.slice";
 
 interface Props {
 	item: ITask;
@@ -15,10 +15,10 @@ const TaskItem: FC<Props> = ({ item }) => {
 	const locale = useLocale();
 
 	const checked = item.status === Status.processed;
-	const createdAt = new Date(JSON.parse(item.createdAt));
-	const endDate = new Date(JSON.parse(item.createdAt));
+	const createdAt = useMemo(() => new Date(JSON.parse(item.createdAt)), [item.createdAt]);
+	const endDate = useMemo(() => new Date(JSON.parse(item.endDate)), [item.endDate]);
 
-	const handleStatusChange = (value: any) => {
+	const handleStatusChange = (): void => {
 		if (checked) {
 			dispatch(setTaskStatus({ id: item.id, status: Status.processing }));
 		} else {

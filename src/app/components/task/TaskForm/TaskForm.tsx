@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, TextField } from "@mui/material";
 import styles from "./TaskForm.module.scss";
@@ -17,7 +17,7 @@ interface Props {
 const TaskForm: FC<Props> = ({ className, newItemId }) => {
 	const dispatch = useAppDispatch();
 	const currentDate = new Date();
-	const [endDate, setEndDate] = React.useState<Date | null>(new Date(currentDate.getTime() + (24 * 60 * 60 * 1000)));
+	const [endDate, setEndDate] = useState<Date | null>(new Date(currentDate.getTime() + (24 * 60 * 60 * 1000)));
 
 	const { register, handleSubmit, setValue, formState: { errors }, reset } = useForm({
 		defaultValues: {

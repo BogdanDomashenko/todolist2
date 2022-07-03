@@ -1,11 +1,11 @@
+import { Outlet } from "react-router-dom";
 import { Container } from "@mui/material";
-import TaskList from "../components/task/TaskList";
 
 const Home = () => {
 	return (
 		<div>
 			<Container>
-				<TaskList />
+				<Outlet />
 			</Container>
 		</div>
 	);
